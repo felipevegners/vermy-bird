@@ -52,6 +52,16 @@
 		"oT": 1,
 		"q": 100
 		},
+	"\/src\/scripts\/vermy-bird-min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/src\/scripts\/vermy-bird-min-min.js",
+		"oF": 0,
+		"sC": 3,
+		"tS": 0
+		},
 	"\/src\/scripts\/vermy-bird.js": {
 		"ft": 64,
 		"ma": 0,

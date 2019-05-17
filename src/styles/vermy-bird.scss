@@ -9,6 +9,10 @@ $game-white-color: whitesmoke;
 $stage-game-background: deepskyblue;
 $stage-game-border: dodgerblue;
 
+$tube-gradient-start: #639301;
+$tube-gradient-end: #a5e82e;
+$tube-border-color: #101010;
+
 * {
   margin: 0;
   padding: 0;
@@ -35,4 +39,63 @@ $stage-game-border: dodgerblue;
   background: $stage-game-background;
   height: 600px;
   width: 1140px;
+  overflow: hidden;
+}
+
+.bird {
+  position: absolute;
+  width: 60px;
+  left: calc(50% - 30px);
+  bottom: 50%;
+}
+
+.tubes {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tube {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__border {
+    height: 30px;
+    width: 130px;
+    background: linear-gradient(90deg, $tube-gradient-start, $tube-gradient-end);
+    border: 2px solid $tube-border-color;
+  }
+  
+  &__body {
+    height: 150px;
+    width: 110px;
+    background: linear-gradient(90deg, $tube-gradient-start, $tube-gradient-end);
+    border-left: 2px solid $tube-border-color;
+    border-right: 2px solid $tube-border-color;
+  }
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  font-family: $font-game-score;
+  color: $game-white-color;
+  z-index: 9999;
+
+  &__title {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  &__score {
+    font-size: 24px;
+  }
 }
