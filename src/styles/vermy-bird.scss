@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Press+Start+2P');
+
+$font-game-title: 'Permanent Marker', cursive;
+$font-game-score: 'Press Start 2P', cursive;
+
+$game-background: darkslateblue;
+$game-white-color: whitesmoke;
+
+$stage-game-background: deepskyblue;
+$stage-game-border: dodgerblue;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: $game-background;
+
+  & h1 {
+    font-family: $font-game-title;
+    color: $game-white-color;
+  }
+}
+
+[vgn-bird] {
+  position: relative;
+  margin: 15px;
+  border: 5px solid $stage-game-border;
+  background: $stage-game-background;
+  height: 600px;
+  width: 1140px;
+}
