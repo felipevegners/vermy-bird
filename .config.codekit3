@@ -43,9 +43,20 @@
 		},
 	"\/src\/resources\/images\/bird.png": {
 		"ft": 32768,
-		"iS": 7419,
+		"iS": 1954,
 		"oA": 0,
 		"oAP": "\/src\/resources\/images\/bird.png",
+		"oF": 0,
+		"oIPL": 1,
+		"opt": 1,
+		"oT": 1,
+		"q": 100
+		},
+	"\/src\/resources\/images\/large-bird.png": {
+		"ft": 32768,
+		"iS": 7419,
+		"oA": 0,
+		"oAP": "\/src\/resources\/images\/large-bird.png",
 		"oF": 0,
 		"oIPL": 0,
 		"opt": 0,
@@ -70,7 +81,7 @@
 		"oAP": "\/src\/scripts\/vermy-bird-min.js",
 		"oF": 0,
 		"sC": 3,
-		"tS": 0
+		"tS": 1
 		},
 	"\/src\/styles\/vermy-bird.min.css": {
 		"aP": 1,
