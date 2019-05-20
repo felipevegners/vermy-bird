@@ -1,0 +1,29 @@
+{
+  "name": "vermy-bird",
+  "version": "1.0.0",
+  "description": "a simple cool & crazy bird game",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelipeVegners/vermy-bird.git"
+  },
+  "author": "FelipeVegners",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FelipeVegners/vermy-bird/issues"
+  },
+  "homepage": "https://github.com/FelipeVegners/vermy-bird#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "browser-sync": "^2.26.5",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2"
+  }
+}

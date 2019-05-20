@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css?family=Permanent+Marker|Press+Start+2P");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: darkslateblue;
+}
+
+.content h1 {
+  font-family: "Permanent Marker", cursive;
+  color: whitesmoke;
+}
+
+[vgn-bird] {
+  position: relative;
+  margin: 15px;
+  border: 5px solid dodgerblue;
+  background: deepskyblue;
+  height: 600px;
+  width: 1140px;
+  overflow: hidden;
+}
+
+.bird {
+  position: absolute;
+  width: 60px;
+  left: calc(50% - 30px);
+  bottom: 50%;
+  z-index: 9999;
+}
+
+.tubes {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tube {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tube__border {
+  height: 30px;
+  width: 130px;
+  background: linear-gradient(90deg, #639301, #a5e82e);
+  border: 2px solid #101010;
+}
+
+.tube__body {
+  height: 150px;
+  width: 110px;
+  background: linear-gradient(90deg, #639301, #a5e82e);
+  border-left: 2px solid #101010;
+  border-right: 2px solid #101010;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  font-family: "Press Start 2P", cursive;
+  color: whitesmoke;
+  z-index: 9999;
+}
+
+.progress__title {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.progress__score {
+  font-size: 24px;
+}
