@@ -88,18 +88,18 @@ function Bird(stageHeight) {
   
   w.onkeydown = e => isFlying = true
   w.onkeyup = e => isFlying = false
-  
-  w.addEventListener('keypress', (event) => {
-    const keyName = event.key
+
     let germanoBird = []
-    germanoBird.push(keyName)
-    console.log(germanoBird)
-    // if (keyName === 'p' && 'g') {
-    //   birdImg = 'pg_bird.png'
-    //   this.element.src = `./resources/images/${ birdImg }`
-    //   console.log('Paulito')
-    // }
-  })
+    w.addEventListener('keypress', (event) => {
+      const keyName = event.key
+      germanoBird.push(keyName)
+      const paulito = germanoBird.join('')
+      if (paulito === 'paulito') {
+        birdImg = 'pg_bird.png'
+        this.element.src = `./resources/images/${ birdImg }`
+        console.log('GO PAULINHO')
+      }
+    })
 
   this.animate = () => {
     const newY = this.getY() +  (isFlying ? 8 : -5)
