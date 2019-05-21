@@ -82,15 +82,27 @@ function Bird(stageHeight) {
 
   this.element = newElement('img', 'bird')
   this.element.src = `./resources/images/${ birdImg }`
-
+  
   this.getY = () => parseInt(this.element.style.bottom.split('px')[0])
   this.setY = y => this.element.style.bottom = `${ y }px`
-
+  
   w.onkeydown = e => isFlying = true
   w.onkeyup = e => isFlying = false
+  
+  w.addEventListener('keypress', (event) => {
+    const keyName = event.key
+    let germanoBird = []
+    germanoBird.push(keyName)
+    console.log(germanoBird)
+    // if (keyName === 'p' && 'g') {
+    //   birdImg = 'pg_bird.png'
+    //   this.element.src = `./resources/images/${ birdImg }`
+    //   console.log('Paulito')
+    // }
+  })
 
   this.animate = () => {
-    const newY = this.getY() +  (isFlying ? 5 : -5)
+    const newY = this.getY() +  (isFlying ? 8 : -5)
     const maxHeight = stageHeight - this.element.clientHeight
 
     if (newY <= 0) {
@@ -159,6 +171,18 @@ function hasCrashed(gameBird, gameTubes) {
   return crash
 }
 
+function RestartGame() {
+  const clearStage = newElement('div', 'restart__modal')
+  const restartButton = newElement('button', 'restart__button')
+  this.element = clearStage
+  clearStage.appendChild(restartButton)
+  restartButton.innerHTML = 'RESTART GAME'
+
+  restartButton.addEventListener('click', function(){
+    new VermyBird().restart()
+  })
+}
+
 function VermyBird () {
   let points = 0
 
@@ -170,21 +194,31 @@ function VermyBird () {
   const gameTubes = new TubesFactory(height, width, 200, 400,
     () => progress.updateScore(++points))
   const gameBird = new Bird(height)
-
+  const restartGame = new RestartGame()
+  
   gameStage.appendChild(progress.element)
   gameStage.append(gameBird.element)
   gameTubes.coupleTubes.forEach(couple => gameStage.appendChild(couple.element))
-
+  
   this.start = () => {
     const timeCount = setInterval(() => {
       gameTubes.animate()
       gameBird.animate()
-
+      
       if (hasCrashed(gameBird, gameTubes)) {
-        console.log('crashed')
         clearInterval(timeCount)
+        setTimeout(() => {
+          gameStage.appendChild(restartGame.element)
+        }, 2000)
       }
     }, 20)
+  }
+  
+  this.restart = () => {
+    while(gameStage.firstChild) {
+      gameStage.removeChild(gameStage.firstChild)
+    }
+    new VermyBird().start()
   }
 }
 
