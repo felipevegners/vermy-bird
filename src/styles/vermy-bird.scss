@@ -47,7 +47,7 @@ $tube-border-color: #101010;
   width: 50px;
   left: calc(50% - 25px);
   bottom: 50%;
-  z-index: 1;
+  z-index: 10;
 }
 
 .tubes {
@@ -102,8 +102,10 @@ $tube-border-color: #101010;
 }
 
 .restart {
+
   &__modal {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
@@ -113,8 +115,50 @@ $tube-border-color: #101010;
     z-index: 2;
   }
 
+  &__text {
+    margin-bottom: 24px;
+    font-family: $font-game-score;
+    font-size: 18px;
+    color: $game-white-color;
+  }
+
+  &__button {
+    margin-top: 24px;
+    padding: 10px 16px;
+    font-family: $font-game-score;
+    font-size: 18px;
+    color: $game-white-color;
+    background: orange;
+    border-radius: 2px;
+    border: 2px solid $game-white-color;
+    box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.35);
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+.start {
+
+  &__modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: rgba($stage-game-background, 0.85);
+    z-index: 2;
+  }
+
+  &__text {
+    font-family: $font-game-score;
+    font-size: 18px;
+    color: $game-white-color;
+  }
+
   &__button {
     padding: 10px 16px;
+    transform: translateY(30px);
     font-family: $font-game-score;
     font-size: 18px;
     color: $game-white-color;

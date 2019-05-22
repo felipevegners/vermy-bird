@@ -33,7 +33,7 @@
   width: 50px;
   left: calc(50% - 25px);
   bottom: 50%;
-  z-index: 1;
+  z-index: 10;
 }
 
 .tubes {
@@ -89,6 +89,7 @@
 
 .restart__modal {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -98,8 +99,47 @@
   z-index: 2;
 }
 
+.restart__text {
+  margin-bottom: 24px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 18px;
+  color: whitesmoke;
+}
+
 .restart__button {
+  margin-top: 24px;
   padding: 10px 16px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 18px;
+  color: whitesmoke;
+  background: orange;
+  border-radius: 2px;
+  border: 2px solid whitesmoke;
+  box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.35);
+  outline: none;
+  cursor: pointer;
+}
+
+.start__modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 191, 255, 0.85);
+  z-index: 2;
+}
+
+.start__text {
+  font-family: "Press Start 2P", cursive;
+  font-size: 18px;
+  color: whitesmoke;
+}
+
+.start__button {
+  padding: 10px 16px;
+  transform: translateY(30px);
   font-family: "Press Start 2P", cursive;
   font-size: 18px;
   color: whitesmoke;

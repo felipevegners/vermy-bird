@@ -15,10 +15,6 @@ function Tube(reverse = false) {
   this.setHeight = tubeHeight => body.style.height = `${ tubeHeight }px`
 }
 
-// const t = new Tube(false)
-// t.setHeight(300)
-// document.querySelector('[vgn-bird]').appendChild(t.element)
-
 function Tubes(height, gap, x) {
   this.element = newElement('div', 'tubes')
 
@@ -42,11 +38,6 @@ function Tubes(height, gap, x) {
   this.gapSort()
   this.setX(x)
 }
-
-// const b = new Tubes(600, 250, 200)
-// const c = new Tubes(600, 250, 600)
-// document.querySelector('[vgn-bird]').appendChild(b.element)
-// document.querySelector('[vgn-bird]').appendChild(c.element)
 
 function TubesFactory(height, width, gap, space, checkPoint) {
   this.coupleTubes = [
@@ -75,9 +66,11 @@ function TubesFactory(height, width, gap, space, checkPoint) {
   }
 }
 
+let birdImg = 'bird.png'
+console.log(birdImg)
+
 function Bird(stageHeight) {
   let isFlying = false
-  let birdImg = 'bird.png'
   let w = window
 
   this.element = newElement('img', 'bird')
@@ -97,7 +90,7 @@ function Bird(stageHeight) {
       if (paulito === 'paulito') {
         birdImg = 'pg_bird.png'
         this.element.src = `./resources/images/${ birdImg }`
-        console.log('GO PAULINHO')
+        console.log(birdImg)
       }
     })
 
@@ -134,18 +127,6 @@ function Progress() {
   this.updateScore(0)
 }
 
-// const gameTubes = new TubesFactory(600, 1140, 200, 400)
-// const bird = new Bird(700)
-// const gameStage = document.querySelector('[vgn-bird]')
-// gameStage.appendChild(bird.element)
-// gameTubes.coupleTubes.forEach(couple => gameStage.appendChild(couple.element))
-// gameStage.appendChild(new Progress().element)
-
-// setInterval(() => {
-//   gameTubes.animate()
-//   bird.animate()
-// }, 20)
-
 function hasCollision(elementA, elementB) {
   const a = elementA.getBoundingClientRect()
   const b = elementB.getBoundingClientRect()
@@ -171,14 +152,43 @@ function hasCrashed(gameBird, gameTubes) {
   return crash
 }
 
+function StartGame() {
+  const gameStage = document.querySelector('[vgn-bird]')
+  const height = gameStage.clientHeight
+  const gameBird = new Bird(height, 'bird.png')
+
+  const clearStage = newElement('div', 'start__modal')
+  const startButton = newElement('button', 'start__button')
+
+  this.element = gameStage
+  gameStage.appendChild(clearStage)
+  clearStage.appendChild(startButton)
+  gameStage.appendChild(gameBird.element)
+  startButton.innerHTML = 'START'
+
+  startButton.addEventListener('click', function() {
+    while (gameStage.firstChild) {
+      gameStage.removeChild(gameStage.firstChild)
+    }
+
+    new VermyBird().start()
+  })
+}
+
 function RestartGame() {
   const clearStage = newElement('div', 'restart__modal')
+  const gameOverText = newElement('h4', 'restart__text')
   const restartButton = newElement('button', 'restart__button')
+
   this.element = clearStage
+
+  clearStage.appendChild(gameOverText)
+  gameOverText.innerHTML = 'GAME OVER'
+
   clearStage.appendChild(restartButton)
   restartButton.innerHTML = 'RESTART GAME'
 
-  restartButton.addEventListener('click', function(){
+  restartButton.addEventListener('click', function() {
     new VermyBird().restart()
   })
 }
@@ -193,17 +203,20 @@ function VermyBird () {
   const progress = new Progress()
   const gameTubes = new TubesFactory(height, width, 200, 400,
     () => progress.updateScore(++points))
+
   const gameBird = new Bird(height)
+  console.log(birdImg)
   const restartGame = new RestartGame()
   
   gameStage.appendChild(progress.element)
-  gameStage.append(gameBird.element)
+  gameStage.appendChild(gameBird.element)
+
   gameTubes.coupleTubes.forEach(couple => gameStage.appendChild(couple.element))
   
   this.start = () => {
     const timeCount = setInterval(() => {
-      gameTubes.animate()
       gameBird.animate()
+      gameTubes.animate()
       
       if (hasCrashed(gameBird, gameTubes)) {
         clearInterval(timeCount)
@@ -218,8 +231,8 @@ function VermyBird () {
     while(gameStage.firstChild) {
       gameStage.removeChild(gameStage.firstChild)
     }
-    new VermyBird().start()
+    new StartGame()
   }
 }
 
-new VermyBird().start()
+new StartGame()
